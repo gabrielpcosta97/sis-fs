@@ -46,8 +46,10 @@
 <!-- SIDEBAR MENU -->
 <ul id="sidebar-menu" class="sidenav blue light-3" style="z-index: 9999;">
   <div class="sidebar-logo">
-    <img src="{{ asset('assets/images/logo.png') }}" width="40px">
-    <span style="font-weight: bold; color: white;">Sis-FS</span>
+    <a href="{{ route('home') }}">
+      <img src="{{ asset('assets/images/logo.png') }}" width="40px">
+      <span style="font-weight: bold; color: white;">Sis-FS</span>
+    </a>
   </div>
   @if(Auth::check())
     <li>
