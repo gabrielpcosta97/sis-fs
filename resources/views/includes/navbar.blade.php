@@ -45,9 +45,19 @@
     <img src="{{ asset('assets/images/logo.png') }}" width="40px">
     <span style="font-weight: bold; color: white;">Sis-FS</span>
   </div>
-  <li>
-    <a href="#" class="white-text"><i class="material-icons white-text">perm_identity</i>Login</a>
-  </li>
+  @if(Auth::check())
+    <li>
+      <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+        @php
+          $arr_name = explode(' ', Auth::user()->name);
+        @endphp
+        <span>{{ $arr_name[0] }}</span>
+        <i class="material-icons right">arrow_drop_down</i>
+      </a>
+    </li>
+  @else
+    <li><a href="#modal-login" class="modal-trigger">Login</a></li>
+  @endif
 </ul>
 
 
