@@ -29,7 +29,7 @@
 
 nav.fixed{
 
-	/*z-index: 999*/;
+	z-index: 999;
 	position: fixed;
 	top: 0;
 
@@ -44,7 +44,7 @@ nav.fixed{
 
 	#modal-login{
 
-		/*height: 20rem*/;
+		height: 20rem;
 		z-index: 10000 !important;
 	}
 
