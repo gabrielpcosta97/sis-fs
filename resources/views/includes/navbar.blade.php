@@ -4,6 +4,10 @@
   <li><a href="{{ route('infraestrutura') }}">Infra <i class="material-icons">square_foot</i></a></li>
   <li><a href="{{ route('login/logout') }}" id="btn-sair">Sair <i class="material-icons">logout</i></a></li>
 </ul>
+<ul id="dropdown2" class="dropdown-content">
+  <li><a href="{{ route('infraestrutura') }}">Infra <i class="material-icons">square_foot</i></a></li>
+  <li><a href="{{ route('login/logout') }}" id="btn-sair">Sair <i class="material-icons">logout</i></a></li>
+</ul>
 
 <div class="progress" id="load-nav" style="display: none;">
   <div class="indeterminate"></div>
@@ -47,16 +51,16 @@
   </div>
   @if(Auth::check())
     <li>
-      <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+      <a class="dropdown-trigger white-text" href="#!" data-target="dropdown2">
         @php
           $arr_name = explode(' ', Auth::user()->name);
         @endphp
         <span>{{ $arr_name[0] }}</span>
-        <i class="material-icons right">arrow_drop_down</i>
+        <i class="material-icons right white-text">arrow_drop_down</i>
       </a>
     </li>
   @else
-    <li><a href="#modal-login" class="modal-trigger">Login</a></li>
+    <li><a href="#modal-login" class="modal-trigger white-text"><i class="material-icons white-text">perm_identity</i>Login</a></li>
   @endif
 </ul>
 

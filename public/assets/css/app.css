@@ -34,3 +34,18 @@ nav.fixed{
 	top: 0;
 
 }
+
+#modal-login{
+
+	height: 12rem;
+}
+
+@media only screen and (max-width: 990px){
+
+	#modal-login{
+
+		height: 20rem;
+		z-index: 10000 !important;
+	}
+
+}

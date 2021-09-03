@@ -1,4 +1,4 @@
-<div id="modal-login" class="modal modal-fixed-footer" style="height: 12rem;">
+<div id="modal-login" class="modal modal-fixed-footer">
 	<form id="form-login">
 	    <div class="modal-content">
 	    	<div class="row">
