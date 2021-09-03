@@ -1,0 +1,28 @@
+.sidebar-logo{
+
+	display: flex;
+	padding: 10px 10px;
+	font-size: 20pt;
+	font-weight: bold;
+	color: white;
+}
+
+.sidebar-logo img{
+
+	width: 70px;
+}
+
+.sidebar-logo span{
+
+	padding-left: 10px;
+}
+
+.progress{
+
+	margin: 0;
+}
+
+.progress .indeterminate{
+
+	background-color: #004d40;
+}

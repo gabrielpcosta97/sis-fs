@@ -1,0 +1,12 @@
+ <style>
+  #location-map{
+    background: #fff;
+    border: none;
+    height: 540px;
+    width: 100%;
+
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+</style>
