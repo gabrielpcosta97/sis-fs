@@ -7,7 +7,7 @@
 
 <div class="row">
 	<div class="col m12">
-		<table id="table-infra">
+		<table id="table-infra" class="responsive-table">
 			<thead>
 				<tr>
 					<th>Departamento</th>
