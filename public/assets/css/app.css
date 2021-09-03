@@ -26,3 +26,11 @@
 
 	background-color: #004d40;
 }
+
+nav.fixed{
+
+	z-index: 999;
+	position: fixed;
+	top: 0;
+
+}
