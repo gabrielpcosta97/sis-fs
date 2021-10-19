@@ -28,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::include("components.modal-infra", "modalInfra");
         Blade::include("components.modal-login", "modalLogin");
+        Blade::include("components.modal-populacao", "modalPopulacao");
     }
 }

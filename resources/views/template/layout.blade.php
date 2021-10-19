@@ -21,7 +21,9 @@
 	</div>
 
 	@modalLogin
+	@modalPopulacao
 
+<script>var logado = "{{ Auth::check() }}"; console.log(logado);</script>
 <script type="text/javascript" src="{{ asset("assets/js/jquery-3.6.0.min.js") }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript" src="{{ asset("assets/js/app.js") }}"></script>
@@ -32,9 +34,15 @@
 		$("#sidebar-menu").sidenav();
 		$("#modal-infra").modal();
 		$("#modal-login").modal();
+		$("#modal-populacao").modal();
 		$("select").formSelect();
 
 		var url_inserir = "{{ route("infraestrutura/inserir") }}";
+		var url_populacao_inserir = "{{ route("populacao/inserir") }}";
+		var url_populacao_alterar = "{{ route("populacao/alterar", 0) }}";
+		var url_populacao_excluir = "{{ route("populacao/excluir", 0) }}";
+
+
 		var url_logar = "{{ route('login/logar') }}";
 
 
@@ -99,6 +107,41 @@
 	    		console.log(error);
 	    		$("#buttons").show();
 	    		$("#load").hide();
+	    	});
+	    });
+
+	    $("#form-populacao").on("submit", function(event){
+
+	    	event.preventDefault();
+
+	    	let id_populacao = $("#id_populacao").val();
+
+	    	let url = id_populacao != '' ? convertUrl(url_populacao_alterar, id_populacao) : url_populacao_inserir;
+
+	    	$.ajax({
+	    		headers: {
+
+	    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    		},
+	    		url: url,
+	    		type: 'post',
+	    		dataType: 'json',
+	    		data: $(this).serialize(),
+	    		beforeSend: function(){
+
+	    			$("#buttons").hide();
+	    			$("#load-populacao").show();
+	    		}
+	    	}).done(function(){
+
+	    		location.reload();
+
+	    	}).fail(function(error){
+
+	    		alert('Falha durante a requisição!');
+	    		console.log(error);
+	    		$("#buttons").show();
+	    		$("#load-populacao").hide();
 	    	});
 	    });
 	});

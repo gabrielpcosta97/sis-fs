@@ -19,7 +19,11 @@ function excluir(url, btn_excluir)
 			}
 		}).done(function(response){
 
-			btn_excluir.closest('tr').remove();
+			if(btn_excluir.closest('tr').html() != undefined)
+				btn_excluir.closest('tr').remove();
+			else
+				btn_excluir.closest('li').remove();
+
 			$("#load-nav").hide();
 
 		}).fail(function(error){

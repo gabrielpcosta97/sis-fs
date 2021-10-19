@@ -39,3 +39,25 @@ Route::group(['prefix' => 'infraestrutura'], function() {
         ->where("id", "[0-9]+")
         ->name("infraestrutura/excluir");
 });
+
+Route::group(['prefix' => 'populacao'], function() {
+    //
+
+    Route::get("listar", "Web\Populacao\PopulacaoController@listar")
+        ->name("populacao/listar");
+
+    Route::get("recuperar/{id}", "Web\Populacao\PopulacaoController@recuperar")
+        ->where("id", "[0-9]+")
+        ->name("populacao/recuperar");
+
+    Route::post("inserir", "Web\Populacao\PopulacaoController@inserir")
+        ->name("populacao/inserir");
+
+    Route::post("alterar/{id}", "Web\Populacao\PopulacaoController@alterar")
+        ->where("id", "[0-9]+")
+        ->name("populacao/alterar");
+
+    Route::post("excluir/{id}", "Web\Populacao\PopulacaoController@excluir")
+        ->where("id", "[0-9]+")
+        ->name("populacao/excluir");
+});

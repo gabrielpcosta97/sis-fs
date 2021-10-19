@@ -35,16 +35,30 @@ nav.fixed{
 
 }
 
-#modal-login{
+.map{
 
-	height: 12rem;
+	height: 100vh;
 }
 
 @media only screen and (max-width: 990px){
 
-	#modal-login{
+	.map{
 
-		height: 20rem;
+		height: 50vh;
+	}
+
+}
+
+.modal.mini-modal{
+
+	height: 12rem !important;
+}
+
+@media only screen and (max-width: 990px){
+
+	.mini-modal{
+
+		height: 20rem !important;
 		z-index: 10000 !important;
 	}
 
