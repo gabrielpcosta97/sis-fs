@@ -1,10 +1,12 @@
 
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
+  <li><a href="{{ route('home') }}">Mapa <i class="material-icons">location_on</i></a></li>
   <li><a href="{{ route('infraestrutura') }}">Infra <i class="material-icons">square_foot</i></a></li>
   <li><a href="{{ route('login/logout') }}" id="btn-sair">Sair <i class="material-icons">logout</i></a></li>
 </ul>
 <ul id="dropdown2" class="dropdown-content">
+  <li><a href="{{ route('home') }}">Mapa <i class="material-icons">location_on</i></a></li>
   <li><a href="{{ route('infraestrutura') }}">Infra <i class="material-icons">square_foot</i></a></li>
   <li><a href="{{ route('login/logout') }}" id="btn-sair">Sair <i class="material-icons">logout</i></a></li>
 </ul>
