@@ -2,12 +2,12 @@
 	<form id="form-populacao">
 	    <div class="modal-content">
 	    	<div class="row">
-	    		<div class="col m8 input-field">
+	    		<div class="col s12 m8 input-field">
 	    			<input type="text" name="topico" id="topico" required="true">
 	    			<label for="topico">Tópico</label>
 	    		</div>
 
-	    		<div class="col m4 input-field">
+	    		<div class="col s12 m4 input-field">
 	    			<input type="number" name="valor" id="valor" required="true">
 	    			<label for="valor">Valor</label>
 	    		</div>

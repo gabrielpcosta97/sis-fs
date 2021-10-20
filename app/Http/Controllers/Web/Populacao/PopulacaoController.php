@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Populacao;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Populacao;
+use Illuminate\Support\Facades\DB;
 
 class PopulacaoController extends Controller
 {
@@ -26,20 +27,6 @@ class PopulacaoController extends Controller
         return response()->json(['dados' => $this->populacao->all()], 200);
     }
 
-    public function inserir(Request $request)
-    {
-
-        $populacao = $this->populacao;
-
-        $populacao->topico = $request->topico;
-        $populacao->valor = $request->valor;
-
-        $populacao->save();
-
-        return response()->json(['dados' => $populacao->first()], 200);
-
-    }
-
     public function recuperar(Request $request, $id)
     {
 
@@ -48,25 +35,83 @@ class PopulacaoController extends Controller
         return response()->json(['dados' => $populacao], 200);
     }
 
+    public function inserir(Request $request)
+    {
+
+        try {
+
+            DB::beginTransaction();
+
+            $populacao = $this->populacao;
+
+            $populacao->topico = $request->topico;
+            $populacao->valor = $request->valor;
+
+            $populacao->save();
+
+            DB::commit();
+
+            return response()->json(['dados' => $populacao->first()], 200);
+            
+        } catch (Exception $e) {
+
+            DB::rollBack();
+
+            report($e);
+            
+        }
+
+    }
+
     public function alterar(Request $request, $id)
     {
 
-        $populacao = $this->populacao->find($id);
+        try {
 
-        $populacao->topico = $request->topico;
-        $populacao->valor = $request->valor;
+            DB::beginTransaction();
 
-        $populacao->save();
+            $populacao = $this->populacao->find($id);
 
-        return response()->json(['dados' => $populacao], 200);
+            $populacao->topico = $request->topico;
+            $populacao->valor = $request->valor;
+
+            $populacao->save();
+
+            DB::commit();
+
+            return response()->json(['dados' => $populacao], 200);
+            
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            
+            report($e);
+        }
+
+        
     }
 
     public function excluir(Request $request, $id)
     {
 
-        $populacao = $this->populacao->where('id', $id);
-        $populacao->delete();
+        try {
 
-        return response()->json(['dados' => $populacao->get()], 200);    
+            DB::beginTransaction();
+
+            $populacao = $this->populacao->where('id', $id);
+            $populacao->delete();
+
+            DB::commit();
+
+            return response()->json(['dados' => $populacao->get()], 200);
+                
+        } catch (Exception $e) {
+
+
+            DB::rollBack();
+            
+            report($e);
+                
+        }    
     }
 }

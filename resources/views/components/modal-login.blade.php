@@ -2,12 +2,12 @@
 	<form id="form-login">
 	    <div class="modal-content">
 	    	<div class="row">
-	    		<div class="col m6 input-field">
+	    		<div class="col s12 m6 input-field">
 	    			<input type="email" name="email" id="email" required="true">
 	    			<label for="email">Email <i class="material-icons">email</i></label>
 	    		</div>
 
-	    		<div class="col m6 input-field">
+	    		<div class="col s12 m6 input-field">
 	    			<input type="password" name="password" id="password" required="true">
 	    			<label for="password">Senha <i class="material-icons">password</i></label>
 	    		</div>

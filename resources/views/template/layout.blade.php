@@ -38,6 +38,8 @@
 		$("select").formSelect();
 
 		var url_inserir = "{{ route("infraestrutura/inserir") }}";
+		var url_infra_alterar = "{{ route("infraestrutura/alterar", 0) }}";
+
 		var url_populacao_inserir = "{{ route("populacao/inserir") }}";
 		var url_populacao_alterar = "{{ route("populacao/alterar", 0) }}";
 		var url_populacao_excluir = "{{ route("populacao/excluir", 0) }}";
@@ -83,12 +85,15 @@
 
 	    	event.preventDefault();
 
+	    	let id_infra = $("#form-infra").find("#id_infra").val();
+	    	let url = id_infra != '' ? convertUrl(url_infra_alterar, id_infra) : url_inserir;
+
 	    	$.ajax({
 	    		headers: {
 
 	    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	    		},
-	    		url: url_inserir,
+	    		url: url,
 	    		type: 'post',
 	    		dataType: 'json',
 	    		data: $(this).serialize(),
@@ -114,7 +119,7 @@
 
 	    	event.preventDefault();
 
-	    	let id_populacao = $("#id_populacao").val();
+	    	let id_populacao = $("#form-populacao").find("#id_populacao").val();
 
 	    	let url = id_populacao != '' ? convertUrl(url_populacao_alterar, id_populacao) : url_populacao_inserir;
 

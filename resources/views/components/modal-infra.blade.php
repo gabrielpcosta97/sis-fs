@@ -88,6 +88,7 @@
 	    	
 	    </div>
 	    <div class="modal-footer">
+	    	<input type="hidden" name="id_infra" id="id_infra" value="">
 	    	<div id="load" style="display: none;">
 	    		
 			  <div class="progress">

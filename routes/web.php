@@ -32,6 +32,14 @@ Route::group(['prefix' => 'infraestrutura'], function() {
     Route::get("listar", "Web\Infraestrutura\InfraestruturaController@listar")
         ->name("infraestrutura/listar");
 
+    Route::get("recuperar/{id}", "Web\Infraestrutura\InfraestruturaController@recuperar")
+        ->where("id", "[0-9]+")
+        ->name("infraestrutura/recuperar");
+
+    Route::post("alterar/{id}", "Web\Infraestrutura\InfraestruturaController@alterar")
+        ->where("id", "[0-9]+")
+        ->name("infraestrutura/alterar");
+
     Route::post("inserir", "Web\Infraestrutura\InfraestruturaController@inserir")
         ->name("infraestrutura/inserir");
 

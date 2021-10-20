@@ -35,6 +35,14 @@ class InfraestruturaController extends Controller
 
     }
 
+    public function recuperar(Request $request, $id)
+    {
+
+        $infra = $this->infraestrutura->with('andar')->where('id', $id)->first();
+
+        return response()->json(['dados' => $infra], 200);
+    }
+
     public function inserir(Request $request)
     {
 
@@ -67,10 +75,47 @@ class InfraestruturaController extends Controller
 
             DB::rollBack();
 
-            report($e->getMessage());
+            report($e);
             
         }
 
+    }
+
+    public function alterar(Request $request, $id)
+    {
+
+        try {
+
+            DB::beginTransaction();
+
+            $infraestrutura = $this->infraestrutura->find($id);
+
+            $infraestrutura->id_andar = $request->andar;
+            $infraestrutura->departamento = $request->departamento;
+            $infraestrutura->nome_ambiente = $request->nome_ambiente;
+            $infraestrutura->uso_principal = $request->uso_principal;
+            $infraestrutura->ocupacao_maxima = $request->ocupacao_maxima;
+            $infraestrutura->area = $request->area;
+            $infraestrutura->epi = $request->epi;
+            $infraestrutura->insumos_solicitados = $request->insumos_solicitados;
+            $infraestrutura->insumos_recebidos = $request->insumos_recebidos;
+            $infraestrutura->saidas_ar = $request->saidas_ar;
+            $infraestrutura->classificacao = $request->classificacao;
+            $infraestrutura->latitude = $request->latitude;
+            $infraestrutura->longitude = $request->longitude;
+
+            $infraestrutura->save();
+
+            DB::commit();
+
+            return response()->json(['dados' => $infraestrutura], 200);
+            
+        } catch (Exception $e) {
+            
+            DB::rollBack();
+
+            report($e);
+        }
     }
 
     public function excluir(Request $request, $id)
@@ -90,6 +135,9 @@ class InfraestruturaController extends Controller
             
         } catch (Exception $e) {
             
+            DB::rollBack();
+
+            report($e);
 
         }
     }
